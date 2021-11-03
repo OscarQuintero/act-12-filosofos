@@ -8,4 +8,4 @@ Oscar Quintero
 
 Archivo principal del proyecto:
 
-[]()
+[filosofos-comensales.py](https://github.com/OscarQuintero/act-12-filosofos/blob/main/filosofos-comensales.py)
