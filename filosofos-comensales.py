@@ -50,6 +50,7 @@ class FilosofoComensal:
 		time.sleep(1)
 		self.ListaCubiertos[self.indiceCubiertoIzq].desocupar()
 		self.ListaCubiertos[self.indiceCubiertoDer].desocupar()
+		self.status = ESPERANDO
 		time.sleep(0.5)
 		return
 
@@ -134,17 +135,35 @@ F3 = FilosofoComensal('F3',2,3,ListaCubiertos)
 F4 = FilosofoComensal('F4',3,4,ListaCubiertos)
 F5 = FilosofoComensal('F5',4,0,ListaCubiertos)
 
+ListaFilosofos = [F5, F1, F2, F3, F4]
+monitor = 1
 
+
+Lugar1 = None
+Lugar2 = None
+Lugar3 = None
 while not todosComieron(6, F1, F2, F3, F4, F5):
 	limpiarPantalla()
 
-	F1.intentarComer()
-	F2.intentarComer()
-	F3.intentarComer()
-	F4.intentarComer()
-	F5.intentarComer()
+	# Monitor de uno
+	if monitor:
+		turno = random.randint(0,4)
+		Lugar1 = ListaFilosofos[turno]
+		turno = random.randint(0,4)
+		Lugar2 = ListaFilosofos[turno]
+		turno = random.randint(0,4)
+		Lugar3 = ListaFilosofos[turno]
 
+		Lugar1.intentarComer()
+		Lugar2.intentarComer()
+		Lugar3.intentarComer()
 
+		monitor = 0
+
+	if (Lugar1.status == ESPERANDO and Lugar2.status == ESPERANDO and Lugar3.status == ESPERANDO): 
+		monitor = 1
+
+	
 	print("Veces que ha comido cada filósofo:")
 	imprimirTablaNumComidas()
 	print("\n")
