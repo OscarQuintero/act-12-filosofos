@@ -112,7 +112,7 @@ print("\n")
 print("Seminario de Sistemas Operativos - 2021 B")
 print("Oscar Alejandro Quintero Iñiguez")
 print("\n")
-time.sleep(0)
+time.sleep(3)
 
 ListaCubiertos = []
 
