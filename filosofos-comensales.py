@@ -5,7 +5,7 @@ import random
 import threading
 
 # Retardo en Segundos para las pausas:
-RETARDO = 3 
+RETARDO = 1 
 # Estados de los filósofos
 ESPERANDO = "Esperando..."
 COMIENDO = "Comiendo"
@@ -50,6 +50,7 @@ class FilosofoComensal:
 		time.sleep(1)
 		self.ListaCubiertos[self.indiceCubiertoIzq].desocupar()
 		self.ListaCubiertos[self.indiceCubiertoDer].desocupar()
+		time.sleep(0.5)
 		return
 
 	def esperar(self):
@@ -134,7 +135,9 @@ F4 = FilosofoComensal('F4',3,4,ListaCubiertos)
 F5 = FilosofoComensal('F5',4,0,ListaCubiertos)
 
 
-for x in range(10000):	
+while not todosComieron(6, F1, F2, F3, F4, F5):
+	limpiarPantalla()
+
 	F1.intentarComer()
 	F2.intentarComer()
 	F3.intentarComer()
@@ -142,26 +145,26 @@ for x in range(10000):
 	F5.intentarComer()
 
 
-print("Veces que ha comido cada filósofo:")
-imprimirTablaNumComidas()
-print("\n")
+	print("Veces que ha comido cada filósofo:")
+	imprimirTablaNumComidas()
+	print("\n")
 
 
 
-# print("\tCubierto 5:", C5.status, "por...\n")
-# print("\u0332".join("Filósofo 1: "), F1.status, "\n")
-# print("\tCubierto 1:", C1.status, "por...\n")
-# print("\u0332".join("Filósofo 2: "), F2.status, "\n")
-# print("\tCubierto 2:", C2.status, "por...\n")
-# print("\u0332".join("Filósofo 3: "), F3.status, "\n")
-# print("\tCubierto 3:", C3.status, "por...\n")
-# print("\u0332".join("Filósofo 4: "), F4.status, "\n")
-# print("\tCubierto 4:", C4.status, "por...\n")
-# print("\u0332".join("Filósofo 5: "), F5.status, "\n")
-# print("\tCubierto 5:", C5.status, "por...\n")
+	print("\tCubierto 5:", C5.status, "\n")
+	print("\u0332".join("Filósofo 1: "), F1.status, "\n")
+	print("\tCubierto 1:", C1.status, "\n")
+	print("\u0332".join("Filósofo 2: "), F2.status, "\n")
+	print("\tCubierto 2:", C2.status, "\n")
+	print("\u0332".join("Filósofo 3: "), F3.status, "\n")
+	print("\tCubierto 3:", C3.status, "\n")
+	print("\u0332".join("Filósofo 4: "), F4.status, "\n")
+	print("\tCubierto 4:", C4.status, "\n")
+	print("\u0332".join("Filósofo 5: "), F5.status, "\n")
+	print("\tCubierto 5:", C5.status, "\n")
+	time.sleep(RETARDO)
 
-if todosComieron(6, F1, F2, F3, F4, F5):
-	exit()
 
+	
 
 
